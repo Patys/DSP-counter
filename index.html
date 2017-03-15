@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Odliczamy Daj Się Poznać</title>
+    <style>
+      body {
+        background: url('http://devstyle.pl/wp-content/uploads/2017/01/dsp2017_fb_cover-1024x379.jpg');
+        -webkit-background-size: cover; /* For WebKit*/
+        -moz-background-size: cover;    /* Mozilla*/
+        -o-background-size: cover;      /* Opera*/
+        background-size: cover;         /* Generic*/
+        background-repeat: no-repeat;
+        background-position: 0% -40%;  /* Dla mozilli*/
+      }
+      #countdown {
+        text-align: center;
+        margin-top: 40px;
+      }
+    	h1 {
+    		color: #05A678;
+      }
+    </style>
+  </head>
+  <body>
+  <div id="countdown"></div>
+  <script>
+    var end = new Date('May 31, 2017 23:59:59');
+
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+
+        function showRemaining() {
+            var now = new Date();
+            var distance = end - now;
+            if (distance < 0) {
+
+                clearInterval(timer);
+                document.getElementById('countdown').innerHTML = 'Już po :c Wróć za rok!';
+
+                return;
+            }
+            var days = Math.floor(distance / _day);
+            var hours = Math.floor((distance % _day) / _hour);
+            var minutes = Math.floor((distance % _hour) / _minute);
+            var seconds = Math.floor((distance % _minute) / _second);
+
+            var timeToEndOfDSP = days + 'dni ' + hours + 'godzin ' + minutes + 'minut ' + seconds + 'sekund<br>\
+            do zakończenia Daj Się Poznać!';
+
+            document.getElementById('countdown').innerHTML = "<h1>" + timeToEndOfDSP + '</h1>';
+        }
+
+        timer = setInterval(showRemaining, 1000);
+    </script>
+  </body>
+</html>
